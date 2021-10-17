@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import { useLocation } from 'react-router-dom'
 
 import TabA from './TabA'
@@ -6,14 +6,14 @@ import TabB from './TabB'
 
 import * as S from "./styles";
 
+export const HomeContext = createContext()
+
 const HomePage = () => {
   const [tabActive, setTabActive] = useState("A");
   const { state } = useLocation()
   const redirectTab = state?.tabActive
-  console.log('🚀 ~ file: index.jsx ~ line 12 ~ HomePage ~ redirectTab', redirectTab);
 
   useEffect(() => {
-    console.log('🚀 ~ file: index.jsx ~ line 17 ~ useEffect ~ redirectTab', redirectTab);
     if (redirectTab) setTabActive(redirectTab)
   }, [redirectTab])
 

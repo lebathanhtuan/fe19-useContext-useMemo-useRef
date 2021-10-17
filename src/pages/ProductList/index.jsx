@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap";
 import { PRODUCT_LIST } from '../../constants/product'
 import { ROUTER } from '../../constants/router'
 
+import * as S from './styles'
+
 const ProductListPage = () => {
   const history = useHistory()
 
@@ -32,6 +34,7 @@ const ProductListPage = () => {
 
   return (
     <>
+    <S.ListTop>
       <Button
         onClick={() => {
           history.push({
@@ -44,6 +47,7 @@ const ProductListPage = () => {
       >
         Đi đến TabB của Home
       </Button>
+    </S.ListTop>
       <div className="list">
         {renderProductList()}
       </div>

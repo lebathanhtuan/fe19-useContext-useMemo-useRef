@@ -1,32 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef } from "react";
+import { Input, Button } from "antd";
 
 const TabA = () => {
-  const [valueA, setValueA] = useState("");
-  console.log('🚀 ~ file: TabA.jsx ~ line 5 ~ TabA ~ valueA', valueA);
-  // Mounting
-  useEffect(() => {
-    console.log("Mới vào render lần đầu tiên A, set lại state cho input từ localStorage");
-    setValueA(JSON.parse(localStorage.getItem('inputA')))
-  }, []);
+  const usernameElement = useRef(null);
+  const passwordElement = useRef(null);
 
-  // UnMounting
-  useEffect(() => {
-    return () => {
-      // Clear Data
-    };
-  }, []);
+  const handleSubmit = () => {
+    console.log("🚀 ~ file: TabA.jsx ~ TabA ~ handleSubmit", {
+      username: usernameElement.current,
+      password: passwordElement.current,
+    });
+  };
 
   return (
     <div>
       TabA
+      <Input type="text" name="usename" ref={usernameElement} />
       <input
-        type="text"
-        onChange={(e) => {
-          setValueA(e.target.value)
-          localStorage.setItem('inputA', JSON.stringify(e.target.value))
-        }}
-        value={valueA}
+        type="password"
+        name="password"
+        ref={passwordElement}
+        style={{ margin: "16px 0" }}
       />
+      <Button onClick={() => handleSubmit()}>Submit</Button>
     </div>
   );
 };

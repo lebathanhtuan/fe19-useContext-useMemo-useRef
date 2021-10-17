@@ -15,6 +15,10 @@ const SIDEBAR_ITEMS = [
     title: "Product List",
     path: ROUTER.PRODUCT_LIST,
   },
+  {
+    title: "To Do List",
+    path: ROUTER.TO_DO_LIST,
+  },
 ];
 
 function Sidebar({ isShowSidebar }) {
